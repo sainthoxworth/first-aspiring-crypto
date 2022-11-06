@@ -1,0 +1,23 @@
+.App {
+  min-height: 100vh;
+}
+.login{
+  height: 100vh;
+  user-select: none;
+}
+.login .loginContent {
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+  height: fit-content;
+}
+.login .loginContent span {
+  cursor: pointer;
+  color: blueviolet;
+}
+.input-group {
+  min-width: 300px;
+}
+.sendButton {
+  text-align: center;
+  background-color: green;
+  color: white;
+}
