@@ -1,14 +1,28 @@
-import React from 'react'
+import axios from 'axios'
+import React, { useEffect, useState } from 'react'
 
 function Market() {
+  const apiUrl = "http://localhost:5000/"
+  const [coins, setCoins] = useState([]) 
+  useEffect(() => {
+    axios.get(apiUrl + 'api/Coins')
+      .then(function (response) {
+        setCoins(response.data)
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  },
+    [])
+
   return (
     <div className='container-fluid'>
-        <div className='shadow border p-3'>
+      <div className='shadow border p-3'>
         <h4 className='mb-3'>Market</h4>
-            {[...Array(10)].map((e,i) => (
-                <div key = {i} className='d-flex border p-3 mb-2'>{i+1} - ETH <span className='ms-auto'>$xx,y</span></div>
-            ))}
-        </div>
+        {coins.map((e, i) => (
+          <div key={i} className='d-flex border p-3 mb-2'>{i + 1} - {e.coinName} <span className='ms-auto'>{e.coinValue}</span></div>
+        ))}
+      </div>
     </div>
   )
 }
