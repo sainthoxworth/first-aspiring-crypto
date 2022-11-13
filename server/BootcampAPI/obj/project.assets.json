@@ -7367,11 +7367,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ahmet\\Source\\Repos\\CryptoAPI\\BootcampAPI\\BootcampAPI.csproj",
+      "projectUniqueName": "C:\\Users\\ahmet\\VSCode\\first-aspiring-crypto\\server\\BootcampAPI\\BootcampAPI.csproj",
       "projectName": "BootcampAPI",
-      "projectPath": "C:\\Users\\ahmet\\Source\\Repos\\CryptoAPI\\BootcampAPI\\BootcampAPI.csproj",
+      "projectPath": "C:\\Users\\ahmet\\VSCode\\first-aspiring-crypto\\server\\BootcampAPI\\BootcampAPI.csproj",
       "packagesPath": "C:\\Users\\ahmet\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ahmet\\Source\\Repos\\CryptoAPI\\BootcampAPI\\obj\\",
+      "outputPath": "C:\\Users\\ahmet\\VSCode\\first-aspiring-crypto\\server\\BootcampAPI\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",

@@ -97,6 +97,26 @@ namespace BootcampAPI.Controllers
             return CreatedAtAction("GetAdminUser", new { id = adminUser.AdminUserName }, adminUser);
         }
 
+        [HttpPost("CheckUser")]
+        public async Task<ActionResult<AdminUser>> CheckAdminUser(AdminUser adminUser)
+        {
+            //Console.WriteLine(adminUser);
+            //await _context.AdminUsers.ToListAsync();
+            var user = await _context.AdminUsers.FindAsync(adminUser.AdminUserName);
+            if (user == null)
+            {
+                return Ok("Giriş Başarısız");
+            }
+            if (user.AdminUserPassword == adminUser.AdminUserPassword)
+            {
+                return Ok("Giriş Başarılı");
+            }
+            else
+            {
+                return Ok("Giriş Başarısız");
+            }
+        }
+
         // DELETE: api/AdminUsers/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteAdminUser(string id)

@@ -29,7 +29,7 @@ namespace BootcampAPI.Controllers
 
         // GET: api/UserCredentials/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<UserCredential>> GetUserCredential(int id)
+        public async Task<ActionResult<UserCredential>> GetUserCredential(string id)
         {
             var userCredential = await _context.UserCredentials.FindAsync(id);
 
@@ -44,9 +44,9 @@ namespace BootcampAPI.Controllers
         // PUT: api/UserCredentials/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutUserCredential(int id, UserCredential userCredential)
+        public async Task<IActionResult> PutUserCredential(string id, UserCredential userCredential)
         {
-            if (id != userCredential.UserId)
+            if (id != userCredential.UserName)
             {
                 return BadRequest();
             }
@@ -78,14 +78,49 @@ namespace BootcampAPI.Controllers
         public async Task<ActionResult<UserCredential>> PostUserCredential(UserCredential userCredential)
         {
             _context.UserCredentials.Add(userCredential);
-            await _context.SaveChangesAsync();
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateException)
+            {
+                if (UserCredentialExists(userCredential.UserName))
+                {
+                    return Conflict();
+                }
+                else
+                {
+                    throw;
+                }
+            }
 
-            return CreatedAtAction("GetUserCredential", new { id = userCredential.UserId }, userCredential);
+            return CreatedAtAction("GetUserCredential", new { id = userCredential.UserName }, userCredential);
+        }
+
+
+        [HttpPost("CheckUser")]
+        public async Task<ActionResult<UserCredential>> CheckUser(UserCredential userCredential)
+        {
+            //Console.WriteLine(adminUser);
+            //await _context.AdminUsers.ToListAsync();
+            var user = await _context.UserCredentials.FindAsync(userCredential.UserName);
+            if (user == null)
+            {
+                return Ok("Giriş Başarısız");
+            }
+            if (user.UserPassword == userCredential.UserPassword)
+            {
+                return Ok("Giriş Başarılı");
+            }
+            else
+            {
+                return Ok("Giriş Başarısız");
+            }
         }
 
         // DELETE: api/UserCredentials/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteUserCredential(int id)
+        public async Task<IActionResult> DeleteUserCredential(string id)
         {
             var userCredential = await _context.UserCredentials.FindAsync(id);
             if (userCredential == null)
@@ -99,9 +134,9 @@ namespace BootcampAPI.Controllers
             return NoContent();
         }
 
-        private bool UserCredentialExists(int id)
+        private bool UserCredentialExists(string id)
         {
-            return _context.UserCredentials.Any(e => e.UserId == id);
+            return _context.UserCredentials.Any(e => e.UserName == id);
         }
     }
 }

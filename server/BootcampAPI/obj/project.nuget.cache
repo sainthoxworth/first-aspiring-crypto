@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "EcKkkfQL1uRkUW3javQlJupoO90i3kqrmJQK1/SAs2IwJoztQBbFSY/ZmujXvSdgfetJHzzI6ayC5t8ctvkWHg==",
+  "dgSpecHash": "UO4kkUi4svz3xWLS8xpGxB5xtL+HDsPH38opwrC4i7KrsVMkU6LhbrlvqB5g71/TJJfq7tLYzvw4ABy6RDhQQg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\ahmet\\Source\\Repos\\CryptoAPI\\BootcampAPI\\BootcampAPI.csproj",
+  "projectFilePath": "C:\\Users\\ahmet\\VSCode\\first-aspiring-crypto\\server\\BootcampAPI\\BootcampAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ahmet\\.nuget\\packages\\bogus\\34.0.2\\bogus.34.0.2.nupkg.sha512",
     "C:\\Users\\ahmet\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
